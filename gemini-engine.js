@@ -1,15 +1,14 @@
-// gemini-engine.js (Corrected Model Endpoint Configuration)
-const EMBEDDED_API_KEY = "AQ.Ab8RN6JRnw9d6ClJQIt5XMw3uMy0SptxAJhrL0jJfNEzTejEbw";
+// gemini-engine.js (Cleaned API Check Logic)
+const EMBEDDED_API_KEY = "AQ.Ab8RN6JRnw9d6C1JQit5XMW3uMy0SptxAJhrL0jJfNEzTejEbw";
 
 export async function synthesizeResearch(query) {
-    if (!EMBEDDED_API_KEY || EMBEDDED_API_KEY.includes("AQ.Ab8RN6JRnw9d6ClJQIt5XMw3uMy0SptxAJhrL0jJfNEzTejEbw")) {
+    // Fixed the check: removed self-matching includes trap
+    if (!EMBEDDED_API_KEY || EMBEDDED_API_KEY.includes("YOUR_ACTUAL")) {
         return "<span style='color: #ef4444;'>Error: Insert your valid Gemini API key.</span>";
     }
 
     try {
-        // Utilizing a stable, production-available model endpoint
-       const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${EMBEDDED_API_KEY}`, {
-            method: 'POST',
+        const response = await fetch(`https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${EMBEDDED_API_KEY}`, {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({
